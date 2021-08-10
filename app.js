@@ -9,7 +9,6 @@ app.use(express.json());
 
 
 //Import Routes
-const postRoutes = require('./routes/posts');
 const volunteerRoutes = require('./routes/volunteers');
 const adminRoutes = require('./routes/admins');
 const opportunityRoutes = require('./routes/opportunities');
@@ -17,7 +16,6 @@ const filledOpportunityRoutes = require('./routes/filledOpportunities');
 
 //MiddleWares
 app.use(cors());
-app.use('/posts', postRoutes);
 app.use('/volunteers', volunteerRoutes);
 app.use('/admins', adminRoutes);
 app.use('/opportunities', opportunityRoutes);
