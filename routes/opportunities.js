@@ -48,4 +48,19 @@ router.delete('/Delete/:opportunityId', async (req,res) => {
   }
 });
 
+router.put('/Update/:opp_id', function(req, res) {
+	let id = req.params.opp_id;
+	var data = {
+		title: req.body.title,
+    description: req.body.description,
+    skills: req.body.skills,
+    center: req.body.center,
+    maxPeople: req.body.maxPeople
+	}
+	Opportunity.findByIdAndUpdate(id, data, function(err, opp) {
+    if (err) throw err;
+    res.send(opp);
+	});
+});
+
 module.exports = router;
