@@ -65,6 +65,38 @@ router.delete('/Delete/:volunteerId', async (req,res) => {
   }
 });
 
+router.put('/Update/:volunteerId', function(req, res) {
+	let id = req.params.opp_id;
+	var data = {
+		firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    username: req.body.username,
+    password: req.body.password,
+    approvalStatus: req.body.approvalStatus,
+    preferredCenters: req.body.preferredCenters,
+    skills: req.body.skills,
+    avalibilityTimes: req.body.avalibilityTimes,
+    address: req.body.address,
+    homePhone: req.body.homePhone,
+    cellPhone:req.body.cellPhone,
+    workPhone:req.body.workPhone,
+    email:req.body.email,
+    educationalBackground:req.body.educationalBackground,
+    licenses:req.body.licenses,
+    emergencyContactName:req.body.emergencyContactName,
+    emergencyContactPhone:req.body.emergencyContactPhone,
+    emergencyContactEmail:req.body.emergencyContactEmail,
+    emergencyContactAddress:req.body.emergencyContactAddress,
+    driverLicenseOnFile:req.body.driverLicenseOnFile,
+    SocialSecurityOnFile:req.body.SocialSecurityOnFile,
+    approvalStatus:req.body.approvalStatus,
+	}
+	Opportunity.findByIdAndUpdate(id, data, function(err, vol) {
+    if (err) throw err;
+    res.send(vol);
+	});
+});
+
 
 
 module.exports = router;

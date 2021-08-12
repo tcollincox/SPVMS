@@ -48,8 +48,8 @@ router.delete('/Delete/:opportunityId', async (req,res) => {
   }
 });
 
-router.put('/Update/:opp_id', function(req, res) {
-	let id = req.params.opp_id;
+router.put('/Update/:opportunityId', function(req, res) {
+	let id = req.params.opportunityId;
 	var data = {
 		title: req.body.title,
     description: req.body.description,
