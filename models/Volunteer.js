@@ -62,7 +62,7 @@ const VolunteerSchema = mongoose.Schema({
   driverLicenseOnFile:{
     type:Boolean
   },
-  SocialSecurityOnFile:{
+  socialSecurityOnFile:{
     type:Boolean
   },
   approvalStatus:{

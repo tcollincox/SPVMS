@@ -44,8 +44,7 @@ router.post('/Post', async (req,res) => {
     emergencyContactEmail:req.body.emergencyContactEmail,
     emergencyContactAddress:req.body.emergencyContactAddress,
     driverLicenseOnFile:req.body.driverLicenseOnFile,
-    SocialSecurityOnFile:req.body.SocialSecurityOnFile,
-    approvalStatus:req.body.approvalStatus,
+    socialSecurityOnFile:req.body.SocialSecurityOnFile
   });
   try{
     const savedVolunteer = await volunteer.save();
@@ -88,8 +87,7 @@ router.put('/Update/:volunteerId', function(req, res) {
     emergencyContactEmail:req.body.emergencyContactEmail,
     emergencyContactAddress:req.body.emergencyContactAddress,
     driverLicenseOnFile:req.body.driverLicenseOnFile,
-    SocialSecurityOnFile:req.body.SocialSecurityOnFile,
-    approvalStatus:req.body.approvalStatus,
+    socialSecurityOnFile:req.body.SocialSecurityOnFile
 	}
 	Opportunity.findByIdAndUpdate(id, data, function(err, vol) {
     if (err) throw err;
