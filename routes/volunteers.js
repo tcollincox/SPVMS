@@ -44,7 +44,7 @@ router.post('/Post', async (req,res) => {
     emergencyContactEmail:req.body.emergencyContactEmail,
     emergencyContactAddress:req.body.emergencyContactAddress,
     driverLicenseOnFile:req.body.driverLicenseOnFile,
-    socialSecurityOnFile:req.body.SocialSecurityOnFile
+    socialSecurityOnFile:req.body.socialSecurityOnFile
   });
   try{
     const savedVolunteer = await volunteer.save();
@@ -64,35 +64,37 @@ router.delete('/Delete/:volunteerId', async (req,res) => {
   }
 });
 
-router.put('/Update/:volunteerId', function(req, res) {
-	let id = req.params.opp_id;
-	var data = {
-		firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    username: req.body.username,
-    password: req.body.password,
-    approvalStatus: req.body.approvalStatus,
-    preferredCenters: req.body.preferredCenters,
-    skills: req.body.skills,
-    avalibilityTimes: req.body.avalibilityTimes,
-    address: req.body.address,
-    homePhone: req.body.homePhone,
-    cellPhone:req.body.cellPhone,
-    workPhone:req.body.workPhone,
-    email:req.body.email,
-    educationalBackground:req.body.educationalBackground,
-    licenses:req.body.licenses,
-    emergencyContactName:req.body.emergencyContactName,
-    emergencyContactPhone:req.body.emergencyContactPhone,
-    emergencyContactEmail:req.body.emergencyContactEmail,
-    emergencyContactAddress:req.body.emergencyContactAddress,
-    driverLicenseOnFile:req.body.driverLicenseOnFile,
-    socialSecurityOnFile:req.body.SocialSecurityOnFile
-	}
-	Opportunity.findByIdAndUpdate(id, data, function(err, vol) {
-    if (err) throw err;
-    res.send(vol);
-	});
+
+router.put('/Update/:volunteerId',async (req, res) => {
+	try{
+    await Volunteer.findByIdAndUpdate(req.params.volunteerId, {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      approvalStatus: req.body.approvalStatus,
+      preferredCenters: req.body.preferredCenters,
+      skills: req.body.skills,
+      avalibilityTimes: req.body.avalibilityTimes,
+      address: req.body.address,
+      homePhone: req.body.homePhone,
+      cellPhone:req.body.cellPhone,
+      workPhone:req.body.workPhone,
+      email:req.body.email,
+      educationalBackground:req.body.educationalBackground,
+      licenses:req.body.licenses,
+      emergencyContactName:req.body.emergencyContactName,
+      emergencyContactPhone:req.body.emergencyContactPhone,
+      emergencyContactEmail:req.body.emergencyContactEmail,
+      emergencyContactAddress:req.body.emergencyContactAddress,
+      driverLicenseOnFile:req.body.driverLicenseOnFile,
+      socialSecurityOnFile:req.body.socialSecurityOnFile
+    });
+    res.send('Updated');
+  } 
+  catch(err){
+    console.error(err.message);
+  }
 });
 
 
