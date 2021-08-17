@@ -48,19 +48,20 @@ router.delete('/Delete/:opportunityId', async (req,res) => {
   }
 });
 
-router.put('/Update/:opportunityId', function(req, res) {
-	let id = req.params.opportunityId;
-	var data = {
-		title: req.body.title,
-    description: req.body.description,
-    skills: req.body.skills,
-    center: req.body.center,
-    maxPeople: req.body.maxPeople
-	}
-	Opportunity.findByIdAndUpdate(id, data, function(err, opp) {
-    if (err) throw err;
-    res.send(opp);
-	});
+router.put('/Update/:opportunityId', async (req, res) => {
+  try{
+    await Opportunity.findByIdAndUpdate(req.params.opportunityId, {
+      title: req.body.title,
+      description: req.body.description,
+      skills: req.body.skills,
+      center: req.body.center,
+      maxPeople: req.body.maxPeople
+    });
+    res.send('Updated');
+  } 
+  catch(err){
+    console.error(err.message);
+  }
 });
 
 module.exports = router;
