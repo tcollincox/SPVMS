@@ -4,8 +4,8 @@ const FilledOpportunity = require('../models/FilledOpportunity');
 
 router.get('/', async (req,res) =>{
   try{
-    const filledOpportunitities = await FilledOpportunity.find();
-    res.json(filledOpportunitities);
+    const filledOpportunities = await FilledOpportunity.find();
+    res.json(filledOpportunities);
   }
   catch(err){
     res.json({message:err});
@@ -22,8 +22,9 @@ router.get('/Id/:filledOpportunityId', async (req,res) => {
   }
 });
 
+
 router.post('/Post', async (req,res) => {
-  const filledOpportunitities = new FilledOpportunity({
+  const filledOpportunity = new FilledOpportunity({
     title: req.body.title,
     center: req.body.center,
     opportunityId: req.body.opportunityId,
@@ -32,8 +33,8 @@ router.post('/Post', async (req,res) => {
     volunteerLastName: req.body.volunteerLastName,
   });
   try{
-    const savedFilledOpportunitities = await filledOpportunitities.save();
-    res.json(savedFilledOpportunitities);
+    const savedFilledOpportunity = await filledOpportunity.save();
+    res.json(savedFilledOpportunity);
   } catch(err){
     res.json({message:err});
   }
