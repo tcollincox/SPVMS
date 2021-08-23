@@ -1,15 +1,25 @@
 # SPVMS
+Important Information
 This won't work without a .env file that has a connection string in it for a mongodb
 
-After installing run:
+Accessing Instructions
+1)Clone project from Github
+2)If not installed install
+-vue
+-npm
+3)add .env file to main project with the connection string 
+
+4) Open terminal and run the commands:
  $npm install 
  and then 
  $npm start
 
 
+Extra Information
 
- Here are all the Api routes provided by this project
- GET
+Here are all the Api routes provided by this project
+
+GET
 http://localhost:3001/volunteers  ------- Gets All volunteers
 http://localhost:3001/admins  ------- Gets All admins
 http://localhost:3001/opportunities  ------- Gets All opportunities
